@@ -9,6 +9,8 @@ static const int MOD = 1e9 + 7;
 
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
+//! Rec + Memo ---> TC = O(N * Sum) | SC = O(N * Sum)
+
 // int dp[101][1000001];
 
 // int f(int i, int sum, vector<int> &a){
@@ -33,6 +35,7 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 //   return dp[i][sum] = min(take, skip);
 // }
 
+//! Bottom Up --->  TC = O(N * Sum) | SC = O(Sum)
 
 int main(){
   fastio();

@@ -9,16 +9,13 @@ static const int MOD = 1e9 + 7;
 
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
-int main(){
+int n,m;
+
+int main() {
   fastio();
 
-  int n, sum;
-  cin >> n >>sum;
-
-  vi a(n);
-  for(int i = 0; i < n; i++){
-    cin >> a[i];
-  }
-
+  cin >> n >> m;
   
+
+  return 0;
 }

@@ -11,7 +11,6 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 //! Partition DP
 
-
 //* TC = O(N*M (N + M))
 
 int main() {

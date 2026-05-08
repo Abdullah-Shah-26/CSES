@@ -24,24 +24,18 @@ int main()
   for (int i = 0; i < n; i++)
     cin >> a[i];
 
-  stack<ll> st;
-  vll ans(n, 0);
+  sort(a.begin(), a.end());
 
-  // Previous Smaller Element
-
-  for (int i = 0; i < n; i++)
+  ll sum = 1;
+  for (auto &c : a)
   {
+    if (c > sum)
+      break;
 
-    while (!st.empty() && a[st.top()] >= a[i])
-      st.pop();
-
-    ans[i] = st.empty() ? 0 : st.top() + 1;
-
-    st.push(i);
+    sum += c;
   }
 
-  for (auto &x : ans)
-    cout << x << " ";
+  cout << sum << endl;
 
   return 0;
 }

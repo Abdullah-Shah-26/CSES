@@ -24,24 +24,29 @@ int main()
   for (int i = 0; i < n; i++)
     cin >> a[i];
 
-  stack<ll> st;
-  vll ans(n, 0);
+  sort(begin(a), end(a));
 
-  // Previous Smaller Element
+  // n = odd -> median = middle element
+  // n = even -> median = Avg of middle elements
 
-  for (int i = 0; i < n; i++)
+  ll median = 0;
+
+  if (n & 1)
   {
-
-    while (!st.empty() && a[st.top()] >= a[i])
-      st.pop();
-
-    ans[i] = st.empty() ? 0 : st.top() + 1;
-
-    st.push(i);
+    median = a[n / 2];
+  }
+  else
+  {
+    median = (a[(n - 1) / 2] + a[n / 2]) / 2;
   }
 
-  for (auto &x : ans)
-    cout << x << " ";
+  ll ops = 0;
+  for (auto &x : a)
+  {
+    ops += abs(median - x);
+  }
+
+  cout << ops << endl;
 
   return 0;
 }

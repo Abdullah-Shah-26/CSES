@@ -16,10 +16,21 @@ int main() {
   cin >> n;
 
   vll a(n);
-  for(int i = 0; i < n; i++)
-    cin >> a[i];
+  for(int i = 0; i < n; i++) cin >> a[i];
 
-  
+  ll cur = 0;
+  ll maxi = LLONG_MIN;
+
+  for(int i = 0; i < n; i++){
+
+    if(cur < 0) 
+      cur = 0;
+
+    cur += a[i];  
+    maxi = max(maxi, cur);
+  }
+
+  cout << maxi << endl;
 
   return 0;
 }

@@ -20,22 +20,28 @@ int main()
   ll n;
   cin >> n;
 
-  vll a(n);
-  for (int i = 0; i < n; i++)
-    cin >> a[i];
+  multiset<ll> towerHeads;
 
-  ll towers = 0;
-  ll maxi = 0;
-  for (int i = n - 1; i >= 0; i--)
+  for (int i = 0; i < n; i++)
   {
-    if (a[i] > maxi)
+    ll h;
+    cin >> h;
+
+    auto it = towerHeads.upper_bound(h);
+
+    if (it == towerHeads.end())
     {
-      maxi = a[i];
-      towers++;
+      // No towers present
+      towerHeads.insert(h);
+    }
+    else
+    {
+      towerHeads.erase(it);
+      towerHeads.insert(h); // Replace the head since we are placing h
     }
   }
 
-  cout << towers << endl;
+  cout << (int)towerHeads.size() << endl;
 
   return 0;
 }

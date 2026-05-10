@@ -99,8 +99,7 @@ public:
 };
 
 // ---------- Solve ---------
-void solve()
-{
+void solve(){
   int n;
   cin >> n;
 
@@ -140,8 +139,7 @@ void solve()
   vi contains(n);
   vi contained(n);
 
-  for (int i = 0; i < n; i++)
-  {
+  for (int i = 0; i < n; i++){
     int r = a[i][1];
     int idx = a[i][2];
 
@@ -157,8 +155,7 @@ void solve()
 
   Fenwick ft2(m);
 
-  for (int i = n - 1; i >= 0; i--)
-  {
+  for (int i = n - 1; i >= 0; i--){
     int r = a[i][1];
     int idx = a[i][2];
 
@@ -174,8 +171,7 @@ void solve()
 }
 
 // ---------- Main ----------
-int main()
-{
+int main(){
   solve();
   return 0;
 }

@@ -116,8 +116,7 @@ void solve()
     rights.pb(r);
   }
 
-  auto cmp = [&](auto &a, auto &b)
-  {
+  auto cmp = [&](auto &a, auto &b){
     if (a[0] == b[0])
     {
       return a[1] > b[1];

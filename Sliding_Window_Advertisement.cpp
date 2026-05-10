@@ -12,6 +12,13 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 int main() {
   fastio();
 
+  int n,k;
+  cin >> n >> k;
+
+  vi a(n);
+  for(int i = 0; i < n; i++)
+    cin >> a[i];
+
   
 
   return 0;

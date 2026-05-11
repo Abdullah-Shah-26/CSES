@@ -49,16 +49,41 @@ static const auto fastio = [](){
 #define per(i,a,b) for(int i=(b)-1;i>=(a);--i)
 #define nl do{ cout << '\n'; }while(0)
 
+int n;
+vi sub;
+vector<vi> adj;
+
+void dfs(int u, int p){
+  for(int &v : adj[u]){
+    if(v == p) continue;
+    dfs(v, u);
+    sub[u] += sub[v];
+  }
+}
+
 // ---------- Solve ---------
 void solve(){
-    
+  cin >> n;
+  adj.resize(n + 1, {});
+  sub.resize(n + 1, 1);
+
+  for(int u = 2; u <= n; u++){
+    int v;
+    cin >> v;
+
+    adj[u].pb(v);
+    adj[v].pb(u);
+  }
+
+  dfs(1,0);
+
+  for(int i = 1; i <= n; i++){
+    cout << sub[i]-1 << " ";
+  }
 }
 
 // ---------- Main ----------
 int main(){
-    int t; 
-    cin >> t;
-    while(t--)
       solve();
     return 0;
 }

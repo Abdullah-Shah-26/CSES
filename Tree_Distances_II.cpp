@@ -49,15 +49,9 @@ static const auto fastio = [](){
 #define per(i,a,b) for(int i=(b)-1;i>=(a);--i)
 #define nl do{ cout << '\n'; }while(0)
 
-int n,q;
-
 // ---------- Solve ---------
 void solve(){
-  cin >> n >> q;
-
-  while(q--){
     
-  }
 }
 
 // ---------- Main ----------

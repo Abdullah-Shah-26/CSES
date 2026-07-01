@@ -69,6 +69,7 @@ vll color;
 vvi adj;
 vll ans;
 vector<unordered_set<ll>> st;
+
 // Each subtree will store a set of distinct colors its children have including
 // itself, hence avoiding duplicates
 

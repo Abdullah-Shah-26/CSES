@@ -4,13 +4,6 @@
 using namespace std;
 using namespace __gnu_pbds;
 
-// Ordered Set
-#define oset                                   \
-  tree<int, null_type, less<int>, rb_tree_tag, \
-       tree_order_statistics_node_update>
-// order_of_key(k) : No of Elements < k
-// *find_by_order(i) : Value at idx i (0 - based)
-
 // ---------- Type aliases ----------
 using ll = long long;
 using ull = unsigned long long;

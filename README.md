@@ -1,3 +1,3 @@
 # CSES
 
-Solving CSES in C++ :)
+Solving CSES in C++

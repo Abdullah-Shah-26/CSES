@@ -27,6 +27,8 @@ static const auto fastio = []() {
   return 0;
 }();
 
+// TC = O(sqrt(N))
+
 int main() {
 
   ll n;

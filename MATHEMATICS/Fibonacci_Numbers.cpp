@@ -26,12 +26,52 @@ static const auto fastio = []() {
   return 0;
 }();
 
+vvll mul(vvll &A, vvll &B) {
+  int n = A.size();
+
+  vvll C(n, vll(n, 0));
+
+  for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+      for (int k = 0; k < n; k++)
+        C[i][j] = (C[i][j] + A[i][k] * B[k][j]) % MOD;
+
+  return C;
+}
+
+vvll matExpo(vvll base, ll exp) {
+  int n = base.size();
+
+  vvll ans(n, vll(n, 0));
+
+  for (int i = 0; i < n; i++)
+    ans[i][i] = 1;
+
+  while (exp) {
+    if (exp & 1)
+      ans = mul(ans, base);
+
+    base = mul(base, base);
+    exp >>= 1;
+  }
+
+  return ans;
+}
+
 int main() {
 
   ll n;
   cin >> n;
 
-  
+  if(n == 0){
+    cout << 0 << endl;
+    return 0;
+  }
+
+  vvll T = {{1,1},{1,0}};
+  vvll res = matExpo(T, n-1);
+
+  cout << res[0][0] << endl;
 
   return 0;
 }

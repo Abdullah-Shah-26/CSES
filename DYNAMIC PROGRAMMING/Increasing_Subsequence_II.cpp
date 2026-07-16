@@ -38,7 +38,6 @@ class Fenwick{
 
     return sum;
   }
-
 };
 
 int main() {

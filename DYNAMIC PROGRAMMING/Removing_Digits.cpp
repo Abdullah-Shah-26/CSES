@@ -12,7 +12,9 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 //! Concept : DAG - DP Optimal  | BFS Level Wise 
 
 //! Recursion + Memo | TC = O(N LogN)  || SC = O(N)
+
 /* 
+
 int dp[1000001];
 int f(int x){
   if(x == 0) return 0;
@@ -32,7 +34,9 @@ int f(int x){
   }
 
   return dp[x] = steps;
-} */
+} 
+
+*/
 
 //! BFS - Layer Wise - TC = O(N * (digits in N)) | SC = O(N)
 /* 

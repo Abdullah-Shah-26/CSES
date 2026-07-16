@@ -7,8 +7,7 @@ using vi = vector<int>;
 using vll = vector<long long>;
 static const int MOD = 1e9 + 7;
 
-inline void fastio()
-{
+inline void fastio() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 }
@@ -84,7 +83,8 @@ ll solve(int i, vector<vector<int>> &a, vll &dp, int n){
   int reward = a[i][2];
 
   // Find next project with start just > current end
-  int next = upper_bound(a.begin() + i + 1, a.end(), vector<int>{end, INT_MAX, INT_MAX}) - a.begin();
+  int next = upper_bound(a.begin() + i + 1, a.end(), vector<int>{end, INT_MAX,
+INT_MAX}) - a.begin();
 
   ll take = reward + solve(next, a, dp, n);
 
@@ -92,8 +92,7 @@ ll solve(int i, vector<vector<int>> &a, vll &dp, int n){
 }
 */
 
-int main()
-{
+int main() {
   fastio();
 
   int n;
@@ -110,16 +109,16 @@ int main()
   // cout << solve(0, a, dp, n) << endl;
 
   vi starts(n);
-  for(int i = 0; i < n; i++)  
+  for (int i = 0; i < n; i++)
     starts[i] = a[i][0];
 
   vll dp(n + 1, 0);
 
-  for(int i = n-1; i >= 0; i--){
-    
+  for (int i = n - 1; i >= 0; i--) {
+
     int end = a[i][1];
     int reward = a[i][2];
-    
+
     // Find first st > current end
     int next = upper_bound(starts.begin(), starts.end(), end) - starts.begin();
 

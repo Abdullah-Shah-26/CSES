@@ -7,11 +7,14 @@ using vi = vector<int>;
 using vll = vector<long long>;
 static const int MOD = 1e9 + 7;
 
-inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
+inline void fastio() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+}
 
 ll n;
 vll a;
-ll ans; 
+ll ans;
 
 // ll dp[200001][200002];
 
@@ -31,30 +34,30 @@ ll ans;
 //   return dp[i][prevIdx + 1] = max(take, skip);
 // }
 
-//! LIS - Patience Sorting 
+//! LIS - Patience Sorting
 
 int main() {
   fastio();
 
   cin >> n;
 
-  a.assign(n,0);
+  a.assign(n, 0);
 
-  for(int i = 0; i < n; i++)
-      cin >> a[i];
-
+  for (int i = 0; i < n; i++)
+    cin >> a[i];
 
   // memset(dp, -1, sizeof(dp));
- 
   // cout << solve(0, -1) << endl;
 
   vector<int> tails;
 
   for (int x : a) {
-      auto it = lower_bound(tails.begin(), tails.end(), x);
+    auto it = lower_bound(tails.begin(), tails.end(), x);
 
-      if (it == tails.end()) tails.push_back(x);
-      else *it = x;
+    if (it == tails.end())
+      tails.push_back(x);
+    else
+      *it = x;
   }
 
   cout << tails.size() << endl;

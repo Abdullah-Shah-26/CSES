@@ -26,10 +26,11 @@ int main() {
 
   ll N = (1 << n); // Total Subsets
 
-  vector<pair<ll,ll>> dp = {N, {INF,INF}};
-  
-  dp[0] = {1, 0};
+  vector<pair<ll,ll>> dp = {N, {INF,INF}};  // dp[mask] = {min rides, wt in last ride}
 
+  // mask represents which people have already been placed
+  
+  dp[0] = {1, 0}; // Empty elevator with wt = 0
 
   for(int mask = 0; mask < N; mask++){
 
@@ -51,7 +52,6 @@ int main() {
         newRides = rides + 1;
         newLastWt = w[i];
       }
-
 
       dp[newMask] = min(dp[newMask], {newRides, newLastWt}); 
     }

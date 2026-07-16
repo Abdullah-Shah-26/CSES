@@ -28,7 +28,8 @@ static const auto fastio = [](){
 
 int main() {
 
-  
+    
 
   return 0;
 }
+

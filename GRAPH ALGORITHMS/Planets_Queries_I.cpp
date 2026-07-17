@@ -16,26 +16,24 @@ vector<vector<int>> up;
 
 void build(vector<int> &parent){
   int n = parent.size();
-  up.assign(LOG, vector<int>(n));
 
-  for(int j = 0; j < n; j++){
-    up[0][j] = parent[j];
-  }
+  up.assign(n, vector<int> (LOG));
 
-  for(int i = 1; i < LOG; i++){
-    for(int j = 0; j < n; j++){
-      up[i][j] = up[i-1][up[i-1][j]];
-    }
-  }
+  // Filling 0th col, Immediate parent
+  for(int node = 0; node < n; node++)
+    up[node][0] = parent[node];
+
+  for(int bit = 1; bit < LOG; bit++)
+    for(int node = 0; node < n; node++)
+      up[node][bit] = up[ up[node][bit - 1] ][bit - 1];
 }
 
 int query(int node, int k){
-  for(int bit = 0; bit < LOG; bit++){
-    if(k & (1 << bit)){
-      node = up[bit][node];
-    }
-  }
-  return node;
+  for(int bit = 0; bit < LOG; bit++)
+    if((k >> bit) & 1)
+      node = up[node][bit];
+
+  return node; 
 }
 
 int main() {
@@ -57,7 +55,7 @@ int main() {
     cin >> node >> k;
     node--;
 
-    cout << query(node, k) + 1 << endl; // converted to 1 based for o/p
+    cout << query(node, k) + 1 << '\n'; // converted to 1 based for o/p
   }
 
   return 0;

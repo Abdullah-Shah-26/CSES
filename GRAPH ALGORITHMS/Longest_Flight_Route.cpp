@@ -13,6 +13,8 @@ inline void fastio() {
   cin.tie(nullptr);
 }
 
+// DP on DAG
+
 int main() {
   fastio();
 
@@ -53,7 +55,7 @@ int main() {
     }
   }
 
-  // dp[u] = max no of cities form 1 -> u
+  // dp[u] = max no of cities on any path from 1 to u
   vi dp(n + 1, -INF);
   vi parent(n + 1, -1);
   dp[1] = 1;

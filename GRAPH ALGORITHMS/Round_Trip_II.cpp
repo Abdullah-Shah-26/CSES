@@ -7,7 +7,10 @@ using vi = vector<int>;
 using vll = vector<long long>;
 static const int MOD = 1e9 + 7;
 
-inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
+inline void fastio() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+}
 
 int n, m;
 vector<vector<int>> adj;
@@ -16,20 +19,21 @@ vector<bool> vis;
 vector<bool> inRecStack;
 int cycleSt = -1;
 int cycleEnd = -1;
-bool dfs(int u){
+
+bool dfs(int u) {
   vis[u] = 1;
   inRecStack[u] = 1;
 
-  for(int v : adj[u]){
-    if(!vis[v]){
+  for (int v : adj[u]) {
+    if (!vis[v]) {
       parent[v] = u;
-      if(dfs(v)){
+      if (dfs(v)) {
         return 1;
       }
-    }
-    else if(inRecStack[v]){
+    } else if (inRecStack[v]) { // Cycle detected
       cycleEnd = u;
       cycleSt = v;
+      return true;
     }
   }
 
@@ -37,7 +41,7 @@ bool dfs(int u){
   return false;
 }
 
-// Directed Graph Cycle : 
+// Directed Graph Cycle :
 
 int main() {
   fastio();
@@ -48,19 +52,19 @@ int main() {
   vis.resize(n + 1, 0);
   inRecStack.resize(n + 1, 0);
 
-  for(int i = 0; i < m; i++){
+  for (int i = 0; i < m; i++) {
     int u, v;
     cin >> u >> v;
     adj[u].push_back(v);
   }
 
-  for(int i = 1; i <= n; i++){
-    if(!vis[i] && dfs(i)){
+  for (int i = 1; i <= n; i++) {
+    if (!vis[i] && dfs(i)) {
       break;
     }
   }
 
-  if(cycleSt == -1){
+  if (cycleSt == -1) {
     cout << "IMPOSSIBLE" << endl;
     return 0;
   }
@@ -69,7 +73,7 @@ int main() {
   cycle.push_back(cycleSt);
 
   int cur = cycleEnd;
-  while(cur != cycleSt){
+  while (cur != cycleSt) {
     cycle.push_back(cur);
     cur = parent[cur];
   }
@@ -79,7 +83,7 @@ int main() {
   reverse(cycle.begin(), cycle.end());
 
   cout << cycle.size() << endl;
-  for(int x : cycle){
+  for (int x : cycle) {
     cout << x << " ";
   }
 

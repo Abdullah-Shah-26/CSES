@@ -89,6 +89,7 @@ void solve() {
         if (low[v] > tin[u])
           bridge = true;
       }
+      
       // Already visited
       // Back edge : 
       else {

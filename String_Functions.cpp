@@ -26,14 +26,45 @@ static const auto fastio = []() {
   return 0;
 }();
 
-int main() {
+vi buildLPS(string &s) {
+  int n = s.size();
 
+  vi lps(n, 0);
+
+  for (int i = 1, j = 0; i < n;) {
+    if (s[i] == s[j]) {
+      lps[i] = j + 1;
+      i++;
+      j++;
+    } else if (j > 0) {
+      j = lps[j - 1];
+    } else {
+      i++;
+    }
+  }
+
+  return lps;
+}
+
+int main() {
   string s;
   cin >> s;
 
   int n = s.size();
 
-  
+  vi lps = buildLPS(s);
+  vi ans;
+
+  int len = lps[n - 1];
+  while (len > 0) {
+    ans.push_back(n - len);
+    len = lps[len - 1];
+  }
+
+  sort(begin(ans), end(ans));
+
+  for (auto &x : ans)
+    cout << x << " ";
 
   return 0;
 }

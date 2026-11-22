@@ -56,6 +56,7 @@ void solve() {
   cin >> n >> a >> b;
 
   int ties = n - a - b;
+  int m = a + b; // rounds that must have a winner
 
   if (ties < 0) {
     cout << "NO" << endl;
@@ -75,24 +76,22 @@ void solve() {
   }
 
   cout << "YES" << endl;
+  
   for (int i = 1; i <= n; i++)
     cout << i << " ";
 
-  for (int i = n + 1; i <= ties; i++)
+  for (int i = n + 1; i <= n + ties; i++)
     cout << i << " ";
-
   cout << endl;
 
   for (int i = 1; i <= n; i++) {
     int x = i + a;
-    if (x > n) {
+    if (x > n)
       x -= n;
-    }
-
     cout << x << " ";
   }
 
-  for (int i = n + 1; i <= ties; i++) {
+  for (int i = n + 1; i <= n + ties; i++) {
     cout << i << " ";
   }
 

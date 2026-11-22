@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vll = vector<long long>;
+static const int MOD = 1e9 + 7;
+
+inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
+
+int main() {
+  fastio();
+
+  ll n;
+  cin >> n;
+
+  vll a(n);
+  for(int i = 0; i < n; i++) cin >> a[i];
+
+  ll cur = 0;
+  ll maxi = LLONG_MIN;
+
+  for(int i = 0; i < n; i++){
+
+    if(cur < 0) 
+      cur = 0;
+
+    cur += a[i];  
+    maxi = max(maxi, cur);
+  }
+
+  cout << maxi << endl;
+
+  return 0;
+}
